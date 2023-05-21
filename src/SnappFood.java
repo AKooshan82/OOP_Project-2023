@@ -14,7 +14,8 @@ public class SnappFood {
     public static ArrayList<String> AdminsNames = new ArrayList<>();
     public static ArrayList<String> UsersNames = new ArrayList<>();
     public static Iterator randomNums1;
-    public static Iterator randomNums2;
+    public static
+    int randomNums1IndexCounting=0;
     public static boolean AddUser(Matcher matcher){
         String username = matcher.group("username");
         String password = matcher.group("password");
@@ -26,7 +27,7 @@ public class SnappFood {
         }
         else{return false;}
     }
-    public static void generateRandomNumsForFoodID(){
+    public static void generateRandomNums(){
         Set<Integer> set = new Random().ints(1, 1000)
                 .distinct()
                 .limit(200)
@@ -34,35 +35,10 @@ public class SnappFood {
                 .collect(Collectors.toSet());
         SnappFood.randomNums1=set.iterator();
     }
-    public static void generateRandomNumsForCommentID(){
-        Set<Integer> set = new Random().ints(1, 500)
-                .distinct()
-                .limit(200)
-                .boxed()
-                .collect(Collectors.toSet());
-        SnappFood.randomNums2=set.iterator();
-    }
     public static void setSecurityWordForUser(String username,String word){
         int id=SnappFood.UsersNames.indexOf(username);
         SnappFood.Users.get(id).securityWord=word;
-        System.out.println("user created successfully.");
-    }
-    public static boolean passwordChecker(String password) {
-        boolean b = false;
-        if (password.length() < 8) System.out.println("password must contains at least 8 characters.");
-        else if (!password.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{8,20}$")) {
-            if (password.matches("^(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{8,20}$"))
-                System.out.println("password must contains at least one number.");
-            else if (password.contains("//s")) System.out.println("white spaces don’t allowed in password.");
-            else if (password.matches("^(?=.*[0-9])(?=.*[A-Z])(?=\\S+$).{8,20}$"))
-                System.out.println("password must contains at least one lower case alphabet.");
-            else if (password.matches("^(?=.*[a-z])(?=.*[0-9])(?=\\S+$).{8,20}$"))
-                System.out.println("password must contains at least one upper case alphabet.");
-        }
-        else {
-            b = true;
-        }
-        return b;
+        System.out.println("user created successfully");
     }
     public static boolean AddAdmin(Matcher matcher){
         String username = matcher.group("username");
@@ -86,7 +62,7 @@ public class SnappFood {
         String password = matcher.group("password");
         if(!SnappFood.UsersNames.contains(username)) System.out.println("username doesn't exists.");
         else if(!SnappFood.Users.get(SnappFood.UsersNames.indexOf(username)).password.equals(password))
-            System.out.println("password is incorrect.");
+            System.out.println("password is incorrect");
         else {
             USER user = SnappFood.Users.get(SnappFood.UsersNames.indexOf(username));
             b=true;
@@ -114,15 +90,8 @@ public class SnappFood {
     }
     public static void Logout(){
         if(SnappFood.nowAdmin==null && SnappFood.nowUser==null) System.out.println("invalid command!.(no one had logged in)");
-        else if(SnappFood.nowAdmin==null){
-            SnappFood.nowUser.nowUserResturant=null;
-            SnappFood.nowUser.nowUserFood=null;
-            SnappFood.nowUser=null;
-            System.out.println("Logged out successfully.");
-        }
         else{
-            SnappFood.nowAdmin.nowFood=null;
-            SnappFood.nowAdmin.nowResturant=null;
+            SnappFood.nowUser=null;
             SnappFood.nowAdmin=null;
             System.out.println("Logged out successfully.");
         }
@@ -134,10 +103,5 @@ public class SnappFood {
     public static void restorePassForAdmin(String username,String word){
         int id=SnappFood.AdminsNames.indexOf(username);
         SnappFood.Admins.get(id).forgotPassword(word);
-    }
-    public static long setInputTimeToSecond(int hour,int minute,int second){
-        long time=0;
-        time+=(hour*3600)+(minute*60)+(second);
-        return time;
     }
 }
