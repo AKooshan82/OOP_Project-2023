@@ -25,7 +25,16 @@ public class ADMIN {
         boolean b=false;
         if(!username.matches("^\\d*[a-zA-Z][a-zA-Z0-9]*$")) {System.out.println("username must be numbers or letters and should have at least 1 letter.");}
         else if(SnappFood.AdminsNames.contains(username)) System.out.println("username already exists.");
-        else {b=SnappFood.passwordChecker(password);}
+        else {
+            if(password.length()<8) System.out.println("password must contains at least 8 characters.");
+            else if(!password.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{8,20}$")){
+                if(password.matches("^(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{8,20}$")) System.out.println("password must contains at least one number.");
+                else if(password.contains("//s")) System.out.println("white spaces don’t allowed in password.");
+                else if(password.matches("^(?=.*[0-9])(?=.*[A-Z])(?=\\S+$).{8,20}$")) System.out.println("password must contains at least one lower case alphabet.");
+                else if(password.matches("^(?=.*[a-z])(?=.*[0-9])(?=\\S+$).{8,20}$")) System.out.println("password must contains at least one upper case alphabet.");
+            }
+            else{b=true;}
+        }
         return b;
     }
     void forgotPassword(String word){
@@ -68,7 +77,6 @@ public class ADMIN {
     }
     void showResturantsForAdmin(){
         Collections.sort(this.resturants,RESTURANT.resturantComparator);
-        System.out.println("your restaurants :");
         for(RESTURANT r : this.resturants){
             System.out.println("Restaurant Name: "+r.name+"   Restaurant ID: "+r.ID);
         }
@@ -104,7 +112,7 @@ public class ADMIN {
         int ID=Integer.parseInt(matcher.group("ID"));
         boolean b=false;
         if(!this.nowResturant.foodIDs.contains(ID)) System.out.println("food with the given ID doesn't exist in restaurant.");
-        else if(this.nowResturant.isInActiveOrders(ID)){System.out.println("your restaurant has some active orders of this food.please follow up them and then try again.");}
+        if(this.nowResturant.isInActiveOrders(ID)){System.out.println("your restaurant has some active orders of this food.please follow up them and then try again.");}
         else{
            this.deleteResturantFoodConfirming(matcher);
            b=true;
@@ -114,161 +122,35 @@ public class ADMIN {
     void deleteResturantFoodConfirming(Matcher matcher){
         int ID=Integer.parseInt(matcher.group("ID"));
         this.nowResturant.deleteFood(ID);
-        //System.out.println("food deleted successfully.");
+        System.out.println("food deleted successfully.");
     }
 
     void editFoodName(Matcher matcher){
         int ID=Integer.parseInt(matcher.group("ID"));
         String newName=matcher.group("newName");
-        if(!this.nowResturant.foodIDs.contains(ID)) System.out.println("food with the given ID doesn't exist in restaurant.");
-        else if(this.nowResturant.isInActiveOrders(ID)){System.out.println("your restaurant has some active orders of this food.please follow up them and then try again.");}
-        else{
-            this.nowResturant.newFoodName(ID,newName);
-            System.out.println("food name edited successfully.");
-        }
+        this.nowResturant.newFoodName(ID,newName);
+        System.out.println("food name edited successfully.");
     }
     void editFoodPrice(Matcher matcher){
         int ID=Integer.parseInt(matcher.group("ID"));
         int newPrice=Integer.parseInt(matcher.group("newPrice"));
-        if(!this.nowResturant.foodIDs.contains(ID)) System.out.println("food with the given ID doesn't exist in restaurant.");
-        else if(this.nowResturant.isInActiveOrders(ID)){System.out.println("your restaurant has some active orders of this food.please follow up them and then try again.");}
-        else {
-            this.nowResturant.newFoodPrice(ID, newPrice);
-            System.out.println("food price edited successfully.");
-        }
+        this.nowResturant.newFoodPrice(ID,newPrice);
+        System.out.println("food price edited successfully.");
     }
     void deactiveResturantFood(Matcher matcher){
         int ID=Integer.parseInt(matcher.group("ID"));
-        if(!this.nowResturant.foodIDs.contains(ID)) System.out.println("food with the given ID doesn't exist in restaurant.");
-        else if(this.nowResturant.isInActiveOrders(ID)){System.out.println("your restaurant has some active orders of this food.please follow up them and then try again.");}
-        else if(this.nowResturant.deactiveFood(ID)) {
-            System.out.println("deactivation done successfully.");
-        }
+        this.nowResturant.deactiveFood(ID);
+        System.out.println("deactivation done successfully.");
     }
     void activeResturantFood(Matcher matcher){
         int ID=Integer.parseInt(matcher.group("ID"));
-        if(!this.nowResturant.foodIDs.contains(ID)) System.out.println("food with the given ID doesn't exist in restaurant.");
-        else if(this.nowResturant.isInActiveOrders(ID)){System.out.println("your restaurant has some active orders of this food.please follow up them and then try again.");}
-        else if(this.nowResturant.activeFood(ID)) {
-            System.out.println("activation done successfully.");
-        }
-    }
-    void setDiscountForFood (Matcher matcher){
-        int ID=Integer.parseInt(matcher.group("ID"));
-        int percent=Integer.parseInt(matcher.group("percent"));
-        int hour=Integer.parseInt(matcher.group("hour"));
-        int minute=Integer.parseInt(matcher.group("minute"));
-        int second=Integer.parseInt(matcher.group("second"));
-        long time=SnappFood.setInputTimeToSecond(hour,minute,second);
-        if(!this.nowResturant.foodIDs.contains(ID)) System.out.println("food with the given ID doesn't exist in restaurant.");
-        else if(this.nowResturant.isInActiveOrders(ID)){System.out.println("your restaurant has some active orders of this food.please follow up them and then try again.");}
-        else if(percent>50) System.out.println("discount percent should be smaller than 50.");
-        else if(this.nowResturant.discountFood(ID,percent,time)) {
-            System.out.println("discount activated successfully.");
-        }
+        this.nowResturant.activeFood(ID);
+        System.out.println("activation done successfully.");
     }
     void selectFood(Matcher matcher){
         int ID=Integer.parseInt(matcher.group("ID"));
         this.nowFood=this.nowResturant.foods.get(ID);
         System.out.println("food selected successfully.");
-    }
-    void diplayFoodRating() {
-        if(this.nowFood.rating.usersRated.size()==0) System.out.println("no one rate this food of your restaurant yet.");
-        else{System.out.println(this.nowFood.rating.toString());}
-    }
-    void diplayRestaurantRating() {
-        if(this.nowResturant.rating.usersRated.size()==0) System.out.println("no one rate your restaurant yet.");
-        else{System.out.println(this.nowResturant.rating.toString());}
-    }
-    void diplayFoodAllRatings() {
-        if(this.nowFood.rating.usersRated.size()==0) System.out.println("no one rate this food of your restaurant yet.");
-        else{ this.nowFood.rating.showAllRatingsForadmin();}
-    }
-
-    void diplayRestaurantAllRatings() {
-        if(this.nowResturant.rating.usersRated.size()==0) System.out.println("no one rate your restaurant yet.");
-        else{this.nowResturant.rating.showAllRatingsForadmin();}
-    }
-    void displayCommentsForFood() {
-        System.out.println("comments:");
-        for (COMMENT comment : this.nowFood.comments) {
-            System.out.println("comment's owner username: "+comment.commentOwner.username+"  *  comment ID: " + comment.ID + " ----> " + comment.content);
-            comment.getCommentResponse();
-        }
-    }
-    void displayCommentsForRestaurant() {
-        System.out.println("comments:");
-        for (COMMENT comment : this.nowResturant.comments) {
-            System.out.println("comment's owner username: "+comment.commentOwner.username+"  *  comment ID: " + comment.ID + " ----> " + comment.content);
-            comment.getCommentResponse();
-        }
-    }
-    boolean reponseForRestaurantErrors(int ID){
-        boolean b=false;
-        if(!this.nowResturant.commentsIDs.contains(ID)) System.out.println("there is no comment with the given ID for your restaurant.");
-        else{
-            int index=this.nowResturant.commentsIDs.indexOf(ID);
-            if(this.nowResturant.comments.get(index).response!=null) System.out.println("you can only response to a comment once.");
-            else{
-                b=true;
-                System.out.println("your response content for comment with ID "+ID+":");
-            }
-        }
-        return b;
-    }
-    void reponseForRestaurantConfirming(int ID,String response){
-        int index=this.nowResturant.commentsIDs.indexOf(ID);
-        this.nowResturant.comments.get(index).setResponse(response);
-        System.out.println("your response registered for this comment successfully.");
-    }
-    boolean editReponseForRestaurantErrors(int ID){
-        boolean b=false;
-        if(!this.nowResturant.commentsIDs.contains(ID)) System.out.println("there is no comment with the given ID for your restaurant.");
-        else{
-            int index=this.nowResturant.commentsIDs.indexOf(ID);
-            if(this.nowResturant.comments.get(index).response==null) System.out.println("you have not responded this comment yet.");
-            else{
-                b=true;
-                System.out.println("your new response content for comment with ID "+ID+":");
-            }
-        }
-        return b;
-    }
-    boolean reponseForFoodErrors(int ID){
-        boolean b=false;
-        if(!this.nowFood.commentsIDs.contains(ID)) System.out.println("there is no comment with the given ID for this food of your restaurant.");
-        else{
-            int index=this.nowFood.commentsIDs.indexOf(ID);
-            if(this.nowFood.comments.get(index).response!=null) System.out.println("you can only response to a comment once.");
-            else{
-                b=true;
-                System.out.println("your response content for comment with ID "+ID+":");
-            }
-        }
-        return b;
-    }
-    boolean editReponseForFoodErrors(int ID){
-        boolean b=false;
-        if(!this.nowFood.commentsIDs.contains(ID)) System.out.println("there is no comment with the given ID for this food of your restaurant.");
-        else{
-            int index=this.nowFood.commentsIDs.indexOf(ID);
-            if(this.nowFood.comments.get(index).response!=null) System.out.println("you have not responded this comment yet.");
-            else{
-                b=true;
-                System.out.println("your new response content for comment with ID "+ID+":");
-            }
-        }
-        return b;
-    }
-    void reponseForFoodConfirming(int ID,String response){
-        int index=this.nowFood.commentsIDs.indexOf(ID);
-        this.nowFood.comments.get(index).setResponse(response);
-        System.out.println("your response registered for this comment successfully.");
-    }
-    void showOpenOrders(){this.nowResturant.displayActiveOrders();}
-    void editOrderStatus(Matcher matcher){
-        int ID=Integer.parseInt(matcher.group("ID"));
-        this.nowResturant.sendingOrder(ID);
     }
 
 }

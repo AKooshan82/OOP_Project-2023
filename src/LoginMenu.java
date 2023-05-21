@@ -5,7 +5,6 @@ public class LoginMenu {
         String result = "";
         Matcher matcher;
         String s1="";
-        System.out.println("you are in login menu.");
         String str = scanner.nextLine();
         while (!str.matches("\\s*EXIT\\s*")) {
             if (( matcher=COMMANDS.getMatcher(str, COMMANDS.ADD_USER)) != null) {
@@ -23,7 +22,7 @@ public class LoginMenu {
                 }
             }
             else if ((matcher = COMMANDS.getMatcher(str, COMMANDS.LOGIN_USER)) != null) {
-                if(SnappFood.LoginUser(matcher)) new userMenu().run(scanner);
+               // if(SnappFood.LoginUser(matcher)) new UserMenu().run(scanner);
             }
             else if ((matcher = COMMANDS.getMatcher(str, COMMANDS.LOGIN_ADMIN)) != null) {
                 if(SnappFood.LoginAdmin(matcher)) new AdminMenu().run(scanner);
