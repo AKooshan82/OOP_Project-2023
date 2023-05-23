@@ -21,7 +21,7 @@ public class AdminMenu {
             else if((matcher = COMMANDS.getMatcher(str, COMMANDS.EDIT_ORDER)) != null){SnappFood.nowAdmin.editOrderStatus(matcher);}
 
             else if((matcher = COMMANDS.getMatcher(str, COMMANDS.ADD_RESTAURANT)) != null){SnappFood.nowAdmin.addResturant(matcher);}
-
+            // TODO : make it easier to read
             else if (( matcher=COMMANDS.getMatcher(str, COMMANDS.SELECT_RESTAURANT)) != null) {
                int id=Integer.parseInt(matcher.group("ID"));
                if(SnappFood.nowAdmin.selectResturant(id)){new AdminRestaurantMenu().run(scanner);}
