@@ -50,7 +50,7 @@ public class RESTURANT{
         boolean b=false;
         for(FOOD f : this.foods){
             if(f.ID==ID){
-                if(this.activeOrders.contains(f)){
+                if(this.isFoodInActiveOrders(f)){
                     System.out.println("your restaurant has some active orders of this food.please follow up them and then try again.");
                     break;
                 }
@@ -65,6 +65,16 @@ public class RESTURANT{
                     b=true;
                     break;
                 }
+            }
+        }
+        return b;
+    }
+    boolean isFoodInActiveOrders(FOOD f){
+        boolean b=false;
+        for(ORDER order : this.activeOrders){
+            if(order.orderFoodsIDs.contains(f.ID)){
+                b=true;
+                break;
             }
         }
         return b;
@@ -101,7 +111,7 @@ public class RESTURANT{
             if(f.ID==ID){
                 this.foods.remove(f);
                 this.menu.remove(n1);
-                this.foodIDs.remove(this.foodIDs.indexOf(ID));
+                this.foodIDs.remove(ID);
                 break;
             }
         }
@@ -124,9 +134,9 @@ public class RESTURANT{
         boolean b=false;
         for(FOOD f : this.foods) {
             if (f.ID == ID) {
-                if (this.activeOrders.contains(f)) {
+                if (this.isFoodInActiveOrders(f)) {
                     b = true;
-                    break;
+                    return b;
                 }
             }
         }
