@@ -8,7 +8,7 @@ public class COMMENT {
         this.content=content;
         this.response=null;
         this.commentOwner=user;
-        this.ID=(int) SnappFood.randomNums2.next();
+        this.ID=(int) SnappFood.randomNums1.next();
     }
     void setResponse(String response){this.response=response;}
     void getCommentResponse(){
