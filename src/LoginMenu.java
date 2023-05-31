@@ -10,14 +10,14 @@ public class LoginMenu {
         while (!str.matches("\\s*EXIT\\s*")) {
             if (( matcher=COMMANDS.getMatcher(str, COMMANDS.ADD_USER)) != null) {
                 if(SnappFood.AddUser(matcher)) {
-                    System.out.println("What is your favorite animal?");
+                    System.out.println("What is was your first school name?");
                     s1 = scanner.nextLine();
                     SnappFood.setSecurityWordForUser(matcher.group("username"),s1);
                 }
             }
             else if ((matcher = COMMANDS.getMatcher(str, COMMANDS.ADD_ADMIN)) != null) {
                 if(SnappFood.AddAdmin(matcher)) {
-                    System.out.println("What is your favorite animal?");
+                    System.out.println("What is was your first school name?");
                     s1 = scanner.nextLine();
                     SnappFood.setSecurityWordForAdmin(matcher.group("username"),s1);
                 }
@@ -32,7 +32,7 @@ public class LoginMenu {
                  String s=matcher.group("username");
                  if(!SnappFood.UsersNames.contains(s)) System.out.println("username doesn't exist.");
                  else{
-                     System.out.println("What is your favorite animal?");
+                     System.out.println("What is was your first school name?");
                      s1=scanner.nextLine();
                      SnappFood.restorePassForUser(s,s1);
                  }
@@ -41,7 +41,7 @@ public class LoginMenu {
                 String s=matcher.group("username");
                 if(!SnappFood.AdminsNames.contains(s)) System.out.println("username doesn't exist.");
                 else{
-                    System.out.println("What is your favorite animal?");
+                    System.out.println("What is was your first school name?");
                     s1=scanner.nextLine();
                     SnappFood.restorePassForAdmin(s,s1);
                 }
