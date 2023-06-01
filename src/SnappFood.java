@@ -90,7 +90,6 @@ public class SnappFood {
         else {
             USER user = SnappFood.Users.get(SnappFood.UsersNames.indexOf(username));
             b=true;
-            System.out.println("Logged in successfully.");
             SnappFood.nowUser=user;
             SnappFood.nowAdmin=null;
         }
@@ -106,7 +105,6 @@ public class SnappFood {
         else {
             ADMIN admin = SnappFood.Admins.get(SnappFood.AdminsNames.indexOf(username));
             b=true;
-            System.out.println("Logged in successfully.");
             SnappFood.nowAdmin=admin;
             SnappFood.nowUser=null;
         }
@@ -139,5 +137,22 @@ public class SnappFood {
         long time=0;
         time+=(hour*3600)+(minute*60)+(second);
         return time;
+    }
+    public static Captcha captchaForLogin(){
+        Captcha captcha=new Captcha();
+        System.out.println(captcha.showCaptcha());
+        System.out.println("ENTER THE SECURITY CODE :");
+        return captcha;
+    }
+    public static boolean captchaChecker(Captcha captcha,String s){
+        boolean b=false;
+       if(captcha.inputEqualsCaptcha(s)){
+           b=true;
+           System.out.println("Logged in successfully.");
+       }
+       else{
+           System.out.println("The code is wrong.");
+       }
+       return b;
     }
 }

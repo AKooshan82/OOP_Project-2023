@@ -23,10 +23,18 @@ public class LoginMenu {
                 }
             }
             else if ((matcher = COMMANDS.getMatcher(str, COMMANDS.LOGIN_USER)) != null) {
-                if(SnappFood.LoginUser(matcher)) new userMenu().run(scanner);
+                if(SnappFood.LoginUser(matcher)) {
+                    Captcha captcha=SnappFood.captchaForLogin();
+                    s1=scanner.nextLine();
+                    if(SnappFood.captchaChecker(captcha,s1)) new userMenu().run(scanner);
+                }
             }
             else if ((matcher = COMMANDS.getMatcher(str, COMMANDS.LOGIN_ADMIN)) != null) {
-                if(SnappFood.LoginAdmin(matcher)) new AdminMenu().run(scanner);
+                if(SnappFood.LoginAdmin(matcher)) {
+                    Captcha captcha=SnappFood.captchaForLogin();
+                    s1=scanner.nextLine();
+                    if(SnappFood.captchaChecker(captcha,s1)) new AdminMenu().run(scanner);
+                }
             }
              else if ((matcher = COMMANDS.getMatcher(str, COMMANDS.FORGET_PASSWORD_USER)) != null) {
                  String s=matcher.group("username");
