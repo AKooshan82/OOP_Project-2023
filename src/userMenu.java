@@ -41,6 +41,6 @@ public class userMenu {
 
             else System.out.println("invalid command!");
             str = scanner.nextLine();
-        }ی
+        }
     }
 }
