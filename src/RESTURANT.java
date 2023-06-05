@@ -27,8 +27,6 @@ public class RESTURANT{
     ArrayList<ORDER> allOrders;
     RESTURANT(String name,ArrayList<String> type){
         this.name=name;
-        //this.owner=SnappFood.nowAdmin;
-        //this.ID=SnappFood.AllResturants.size()+1;
         this.foods=new ArrayList<>();
         this.foodIDs=new ArrayList<>();
         this.menu=new ArrayList<>();
