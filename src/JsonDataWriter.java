@@ -48,6 +48,13 @@ public class JsonDataWriter<T> {
             e.printStackTrace();
         }
     }
+    public void clearJsonFile(String filePath) {
+        try (FileWriter writer = new FileWriter(filePath)) {
+            writer.write("[]");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     public static void deleteLines(String filePath) {
         try {
             File inputFile = new File(filePath);
@@ -61,15 +68,10 @@ public class JsonDataWriter<T> {
             int totalLines = getTotalLines(filePath);
 
             while ((line = reader.readLine()) != null) {
-                if (lineNumber == 1 || lineNumber == totalLines || (lineNumber == 2 && line.length() > 10)) {
-                    if (lineNumber == 2) {
-                        line = line.substring(10);
-                    }
-                    lineNumber++;
-                    continue;
+                if (lineNumber > 2 && lineNumber < totalLines) {
+                    writer.write(line);
+                    writer.newLine();
                 }
-                writer.write(line);
-                writer.newLine();
                 lineNumber++;
             }
 
@@ -81,10 +83,14 @@ public class JsonDataWriter<T> {
 
             // Rename the temporary file to the original file name
             tempFile.renameTo(inputFile);
+
+            // Prepend "[" to the beginning of the file
+            prependCharacter(filePath, '[');
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
     private static int getTotalLines(String filePath) throws IOException {
         int totalLines = 0;
         try (LineNumberReader reader = new LineNumberReader(new FileReader(filePath))) {
@@ -93,5 +99,15 @@ public class JsonDataWriter<T> {
             }
         }
         return totalLines;
+    }
+
+    private static void prependCharacter(String filePath, char character) throws IOException {
+        RandomAccessFile file = new RandomAccessFile(filePath, "rw");
+        byte[] originalContent = new byte[(int) file.length()];
+        file.readFully(originalContent);
+        file.seek(0);
+        file.writeByte(character);
+        file.write(originalContent);
+        file.close();
     }
 }

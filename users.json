@@ -1,12 +1,4 @@
-    {
-      "username": "kooshan",
-      "securityWord": "alborz",
-      "password": "fattah345A",
-      "cart": [],
-      "orders": [],
-      "balance": 0
-    },
-    {
+[    {
       "username": "kooshan",
       "securityWord": "alborz",
       "password": "fattah345A",

@@ -75,6 +75,8 @@ public class LoginMenu {
         }
         JsonDataWriter<USER> userJsonDataWriter = new JsonDataWriter<>(SnappFood.Users,"users.json");
         JsonDataWriter<ADMIN> adminJsonDataWriter = new JsonDataWriter<>(SnappFood.Admins,"admins.json");
+        userJsonDataWriter.clearJsonFile("users.json");
+        adminJsonDataWriter.clearJsonFile("admins.json");
         userJsonDataWriter.saveToJson();
         userJsonDataWriter.deleteLines("users.json");
         adminJsonDataWriter.saveToJson();
