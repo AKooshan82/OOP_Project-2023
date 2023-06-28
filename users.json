@@ -5,5 +5,13 @@
       "cart": [],
       "orders": [],
       "balance": 0
+    },
+    {
+      "username": "hossein",
+      "securityWord": "atomi",
+      "password": "12345Aaaaaa",
+      "cart": [],
+      "orders": [],
+      "balance": 0
     }
   ]

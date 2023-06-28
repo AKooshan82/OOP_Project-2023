@@ -3,18 +3,8 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 public class LoginMenu {
     public void run(Scanner scanner) {
-        JsonFileReader<USER> userJsonDataReader = new JsonFileReader<>(USER.class,"users.json");
-        JsonFileReader<ADMIN> adminJsonDataReader = new JsonFileReader<>(ADMIN.class,"admins.json");
-        SnappFood.Users = new ArrayList<>();
-        SnappFood.Admins = new ArrayList<>();
-        SnappFood.Admins = (ArrayList<ADMIN>) adminJsonDataReader.readJsonFile();
-        for(ADMIN x : SnappFood.Admins){
-            SnappFood.AdminsNames.add(x.username);
-        }
-        SnappFood.Users = (ArrayList<USER>) userJsonDataReader.readJsonFile();
-        for(USER x : SnappFood.Users){
-            SnappFood.UsersNames.add(x.username);
-        }
+        SaveAndLoadFromArrayLists saveAndLoadFromArrayLists = new SaveAndLoadFromArrayLists();
+        saveAndLoadFromArrayLists.loadAllTheInformationFromJson();
         //int UsersAtFirst = SnappFood.Users.size();
         //int AdminsAtFirst = SnappFood.Admins.size();
         String result = "";
@@ -73,13 +63,6 @@ public class LoginMenu {
 
             str = scanner.nextLine();
         }
-        JsonDataWriter<USER> userJsonDataWriter = new JsonDataWriter<>(SnappFood.Users,"users.json");
-        JsonDataWriter<ADMIN> adminJsonDataWriter = new JsonDataWriter<>(SnappFood.Admins,"admins.json");
-        userJsonDataWriter.clearJsonFile("users.json");
-        adminJsonDataWriter.clearJsonFile("admins.json");
-        userJsonDataWriter.saveToJson();
-        userJsonDataWriter.deleteLines("users.json");
-        adminJsonDataWriter.saveToJson();
-        adminJsonDataWriter.deleteLines("admins.json");
+        saveAndLoadFromArrayLists.writeAllTheInformationToJson();
     }
 }
