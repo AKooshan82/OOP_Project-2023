@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.phase2.SuperMarketList">
+   <children>
+      <VBox prefHeight="600.0" prefWidth="400.0">
+         <children>
+            <Label fx:id="snappFood" alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="400.0" style="-fx-background-color: gold;" text="Super Markets" />
+            <ScrollPane prefHeight="500.0" prefWidth="400.0">
+               <content>
+                  <VBox fx:id="supBut" alignment="CENTER" prefHeight="614.0" prefWidth="399.0" />
+               </content>
+            </ScrollPane>
+            <HBox prefHeight="50.0" prefWidth="400.0">
+               <children>
+                  <JFXButton buttonType="RAISED" onAction="#switchToMain" prefHeight="50.0" prefWidth="134.0" text="home">
+                     <graphic>
+                        <ImageView fitHeight="50.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@home.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</StackPane>

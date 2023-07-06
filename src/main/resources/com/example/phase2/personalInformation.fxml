@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.phase2.PersonalInformation">
+   <children>
+      <VBox prefHeight="600.0" prefWidth="400.0">
+         <children>
+            <Label fx:id="snappFood" alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="400.0" style="-fx-background-color: fff000;" text="Personal Information" />
+            <ScrollPane prefHeight="500.0" prefWidth="400.0">
+               <content>
+                  <VBox prefHeight="500.0" prefWidth="400.0">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="400.0">
+                           <children>
+                              <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@user.png" />
+                                 </image>
+                              </ImageView>
+                              <JFXButton buttonType="RAISED" ripplerFill="WHITE" text="+">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </JFXButton>
+                           </children>
+                        </HBox>
+                        <VBox prefHeight="300.0" prefWidth="400.0">
+                           <children>
+                              <HBox prefHeight="50.0" prefWidth="318.0">
+                                 <children>
+                                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: ffff00;" text="username" />
+                                    <TextArea fx:id="userName" prefHeight="39.0" prefWidth="250.0" promptText="userName" />
+                                    <JFXButton fx:id="userNameB" onAction="#changeUserName" prefHeight="40.0" prefWidth="70.0" text="change" />
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="50.0" prefWidth="400.0">
+                                 <children>
+                                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="39.0" prefWidth="60.0" style="-fx-background-color: ffff00;" text="+98" />
+                                    <TextArea fx:id="mobileNum" prefHeight="39.0" prefWidth="250.0" promptText="mobilenumber" />
+                                    <JFXButton fx:id="mobileNumB" onAction="#changeNum" prefHeight="42.0" prefWidth="70.0" text="change" />
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="50.0" prefWidth="400.0">
+                                 <children>
+                                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="39.0" prefWidth="133.0" style="-fx-background-color: ffff00;" text="balance" />
+                                    <Label fx:id="cashl" alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="133.0" text=".....$" />
+                                    <JFXButton fx:id="cashButton" onAction="#switchToPayment" prefHeight="40.0" prefWidth="133.0" text="deposite" />
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="141.0" prefWidth="400.0">
+                                 <children>
+                                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="39.0" prefWidth="60.0" style="-fx-background-color: ffff00;" text="adderss" />
+                                    <TextArea fx:id="address" prefHeight="100.0" prefWidth="250.0" promptText="address" />
+                                    <JFXButton fx:id="addressB" onAction="#changeAddress" prefHeight="42.0" prefWidth="70.0" text="change" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="142.0" prefWidth="400.0">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="20.0" prefWidth="400.0" text="security Question" />
+                              <HBox prefHeight="100.0" prefWidth="200.0" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+               </content>
+            </ScrollPane>
+            <HBox prefHeight="50.0" prefWidth="400.0">
+               <children>
+                  <JFXButton buttonType="RAISED" onAction="#switchToMain" prefHeight="50.0" prefWidth="134.0" text="home">
+                     <graphic>
+                        <ImageView fitHeight="50.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@home.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</StackPane>

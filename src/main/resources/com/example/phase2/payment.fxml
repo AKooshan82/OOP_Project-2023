@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.phase2.Payment">
+   <children>
+      <VBox prefHeight="200.0" prefWidth="100.0">
+         <children>
+            <Label fx:id="snappFood" alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="400.0" style="-fx-background-color: gold;" text="Money Transfer" />
+            <ScrollPane prefHeight="500.0" prefWidth="400.0">
+               <content>
+                  <VBox prefHeight="500.0" prefWidth="400.0">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="100.0" prefWidth="400.0">
+                           <children>
+                              <HBox alignment="CENTER" prefHeight="10.0" prefWidth="400.0">
+                                 <children>
+                                    <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@money.png" />
+                                       </image>
+                                    </ImageView>
+                                    <TextArea fx:id="cash" nodeOrientation="LEFT_TO_RIGHT" prefHeight="42.0" prefWidth="300.0" promptText="\$$">
+                                       <font>
+                                          <Font size="19.0" />
+                                       </font>
+                                    </TextArea>
+                                 </children>
+                              </HBox>
+                              <VBox prefHeight="8.0" prefWidth="400.0" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="91.0" prefWidth="400.0">
+                           <children>
+                              <HBox alignment="CENTER" prefHeight="10.0" prefWidth="400.0">
+                                 <children>
+                                    <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@credit-card.png" />
+                                       </image>
+                                    </ImageView>
+                                    <TextArea fx:id="cardNum" nodeOrientation="LEFT_TO_RIGHT" prefHeight="42.0" prefWidth="300.0" promptText="----/----/----/----">
+                                       <font>
+                                          <Font size="19.0" />
+                                       </font>
+                                    </TextArea>
+                                 </children>
+                              </HBox>
+                              <VBox prefHeight="18.0" prefWidth="400.0" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="94.0" prefWidth="400.0">
+                           <children>
+                              <HBox alignment="CENTER" prefHeight="50.0" prefWidth="400.0">
+                                 <children>
+                                    <VBox prefHeight="60.0" prefWidth="96.0" />
+                                    <Label text="CVV2">
+                                       <font>
+                                          <Font name="Arial Black" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextArea fx:id="cvv2" nodeOrientation="LEFT_TO_RIGHT" prefHeight="30.0" prefWidth="100.0">
+                                       <font>
+                                          <Font size="19.0" />
+                                       </font>
+                                    </TextArea>
+                                    <VBox prefHeight="60.0" prefWidth="122.0" />
+                                 </children>
+                              </HBox>
+                              <VBox prefHeight="11.0" prefWidth="400.0" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="87.0" prefWidth="400.0">
+                           <children>
+                              <HBox alignment="CENTER" prefHeight="70.0" prefWidth="400.0">
+                                 <children>
+                                    <VBox prefHeight="60.0" prefWidth="23.0" />
+                                    <Label prefHeight="22.0" prefWidth="68.0" text="exp date">
+                                       <font>
+                                          <Font name="Arial Black" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextArea fx:id="exp" nodeOrientation="LEFT_TO_RIGHT" prefHeight="69.0" prefWidth="174.0" promptText="YY/MM">
+                                       <font>
+                                          <Font size="19.0" />
+                                       </font>
+                                    </TextArea>
+                                    <VBox prefHeight="60.0" prefWidth="78.0" />
+                                 </children>
+                              </HBox>
+                              <VBox prefHeight="41.0" prefWidth="400.0" />
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="86.0" prefWidth="400.0">
+                           <children>
+                              <HBox alignment="CENTER" prefHeight="35.0" prefWidth="400.0">
+                                 <children>
+                                    <VBox prefHeight="60.0" prefWidth="19.0" />
+                                    <Label fx:id="secCodeL" alignment="CENTER_RIGHT" prefHeight="22.0" prefWidth="75.0" text="sec code">
+                                       <font>
+                                          <Font name="Arial Black" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextArea fx:id="secCode" nodeOrientation="LEFT_TO_RIGHT" prefHeight="60.0" prefWidth="178.0" promptText="type security code">
+                                       <font>
+                                          <Font size="19.0" />
+                                       </font>
+                                    </TextArea>
+                                    <VBox alignment="CENTER" prefHeight="60.0" prefWidth="86.0">
+                                       <children>
+                                          <CheckBox fx:id="robot" mnemonicParsing="false" text="not robot" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                              <VBox prefHeight="50.0" prefWidth="400.0" />
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="82.0" prefWidth="400.0">
+                           <children>
+                              <HBox alignment="CENTER" prefHeight="35.0" prefWidth="400.0">
+                                 <children>
+                                    <Label alignment="CENTER_RIGHT" prefHeight="22.0" prefWidth="96.0" text="card code">
+                                       <font>
+                                          <Font name="Arial Black" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextArea fx:id="cardCode" nodeOrientation="LEFT_TO_RIGHT" prefHeight="60.0" prefWidth="194.0">
+                                       <font>
+                                          <Font size="19.0" />
+                                       </font>
+                                    </TextArea>
+                                    <VBox prefHeight="60.0" prefWidth="80.0" />
+                                 </children>
+                              </HBox>
+                              <VBox prefHeight="22.0" prefWidth="400.0" />
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="65.0" prefWidth="400.0">
+                           <children>
+                              <VBox alignment="CENTER" prefHeight="26.0" prefWidth="400.0">
+                                 <children>
+                                    <JFXButton fx:id="charge" buttonType="RAISED" onAction="#payBtn" prefHeight="26.0" prefWidth="127.0" style="-fx-background-color: lime;" text="charge" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+               </content>
+            </ScrollPane>
+            <HBox prefHeight="50.0" prefWidth="400.0">
+               <children>
+                  <JFXButton buttonType="RAISED" onAction="#switchToMain" prefHeight="50.0" prefWidth="134.0" text="home">
+                     <graphic>
+                        <ImageView fitHeight="50.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@home.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</StackPane>

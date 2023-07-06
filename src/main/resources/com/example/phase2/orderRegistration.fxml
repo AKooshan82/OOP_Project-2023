@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.phase2.OrderRegistration">
+   <children>
+      <VBox prefHeight="600.0" prefWidth="400.0">
+         <children>
+            <Label fx:id="snappFood" alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="400.0" style="-fx-background-color: gold;" text="Peyment" />
+            <ScrollPane prefHeight="500.0" prefWidth="400.0">
+               <content>
+                  <VBox prefHeight="500.0" prefWidth="400.0">
+                     <children>
+                        <HBox fx:id="orderDetail" prefHeight="210.0" prefWidth="400.0">
+                           <children>
+                              <HBox prefHeight="166.0" prefWidth="27.0" />
+                              <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@shopping-bag.png" />
+                                 </image>
+                              </ImageView>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Label fx:id="detail" text="Label" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </HBox>
+                        <VBox alignment="CENTER" prefHeight="280.0" prefWidth="400.0">
+                           <children>
+                              <VBox alignment="CENTER" prefHeight="74.0" prefWidth="400.0">
+                                 <children>
+                                    <Label fx:id="price" style="-fx-background-color: orange;" text="Label" />
+                                 </children>
+                              </VBox>
+                              <VBox alignment="CENTER" prefHeight="93.0" prefWidth="400.0">
+                                 <children>
+                                    <HBox alignment="CENTER" prefHeight="49.0" prefWidth="400.0">
+                                       <children>
+                                          <JFXButton contentDisplay="GRAPHIC_ONLY" prefHeight="71.0" prefWidth="58.0" text="Button">
+                                             <graphic>
+                                                <ImageView fitHeight="42.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@low-price.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </JFXButton>
+                                          <TextArea fx:id="disCount" prefHeight="58.0" prefWidth="200.0" promptText="discount code" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              <JFXButton fx:id="pay" contentDisplay="CENTER" onAction="#pay" prefHeight="70.0" prefWidth="150.0" text="Button">
+                                 <graphic>
+                                    <ImageView fitHeight="72.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@order-now.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </JFXButton>
+                              <Label fx:id="alert" alignment="CENTER" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+               </content>
+            </ScrollPane>
+            <HBox prefHeight="50.0" prefWidth="400.0">
+               <children>
+                  <JFXButton buttonType="RAISED" onAction="#switchToMain" prefHeight="50.0" prefWidth="134.0" text="home">
+                     <graphic>
+                        <ImageView fitHeight="50.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@home.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton fx:id="charge" onAction="#switchToCharge" prefHeight="50.0" prefWidth="134.0">
+                     <graphic>
+                        <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@credit-card.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton onAction="#switchToCart" text="cart">
+                     <graphic>
+                        <ImageView fitHeight="50.0" fitWidth="134.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@cartpng.parspng.com-6.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</StackPane>

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.phase2.Restaurant">
+   <children>
+      <VBox prefHeight="600.0" prefWidth="400.0">
+         <children>
+            <Label fx:id="snappFood" alignment="CENTER" contentDisplay="CENTER" prefHeight="84.0" prefWidth="400.0" style="-fx-background-color: gold;" text="Restaurant Page" />
+            <HBox prefHeight="118.0" prefWidth="400.0">
+               <children>
+                  <VBox prefHeight="83.0" prefWidth="326.0">
+                     <children>
+                        <TextArea fx:id="search" prefHeight="38.0" prefWidth="582.0" promptText="search" />
+                        <ScrollPane prefHeight="200.0" prefWidth="200.0">
+                           <content>
+                              <VBox fx:id="searchVBox" prefHeight="0.0" prefWidth="200.0" />
+                           </content>
+                        </ScrollPane>
+                     </children>
+                  </VBox>
+                  <HBox prefHeight="38.0" prefWidth="278.0" />
+               </children>
+            </HBox>
+            <ScrollPane prefHeight="470.0" prefWidth="400.0">
+               <content>
+                  <VBox prefHeight="407.0" prefWidth="399.0">
+                     <children>
+                        <VBox prefHeight="23.0" prefWidth="399.0" />
+                        <HBox prefHeight="117.0" prefWidth="399.0">
+                           <children>
+                              <ImageView fitHeight="73.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@restaurant1.png" />
+                                 </image>
+                              </ImageView>
+                              <HBox prefHeight="118.0" prefWidth="38.0" />
+                              <Label fx:id="detail" alignment="TOP_LEFT" prefHeight="200.0" prefWidth="300.0" />
+                           </children>
+                        </HBox>
+                        <VBox alignment="CENTER" prefHeight="122.0" prefWidth="399.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="20.0" prefWidth="400.0" style="-fx-background-color: gold;" text="Comments" />
+                              <HBox prefHeight="69.0" prefWidth="399.0">
+                                 <children>
+                                    <HBox prefHeight="100.0" prefWidth="50.0" />
+                                    <ScrollPane prefHeight="60.0" prefWidth="300.0">
+                                       <content>
+                                          <VBox fx:id="commentsVBox" prefHeight="200.0" prefWidth="300.0" />
+                                       </content>
+                                    </ScrollPane>
+                                    <HBox prefHeight="100.0" prefWidth="50.0" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="210.0" prefWidth="399.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="20.0" prefWidth="400.0" style="-fx-background-color: gold;" text="Foods" />
+                              <HBox prefHeight="207.0" prefWidth="399.0">
+                                 <children>
+                                    <HBox prefHeight="100.0" prefWidth="50.0" />
+                                    <ScrollPane prefHeight="152.0" prefWidth="300.0">
+                                       <content>
+                                          <VBox fx:id="foodsVBox" prefHeight="270.0" prefWidth="300.0">
+                                             <children>
+                                                <HBox alignment="CENTER" prefHeight="90.0" prefWidth="300.0" />
+                                                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="300.0" />
+                                                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="300.0">
+                                                   <children>
+                                                      <JFXButton text=" ">
+                                                         <graphic>
+                                                            <ImageView fitHeight="60.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                                               <image>
+                                                                  <Image url="@nuts.png" />
+                                                               </image>
+                                                            </ImageView>
+                                                         </graphic>
+                                                      </JFXButton>
+                                                      <JFXButton prefHeight="80.0" prefWidth="80.0" text=" ">
+                                                         <graphic>
+                                                            <ImageView fitHeight="60.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                                               <image>
+                                                                  <Image url="@detergent.png" />
+                                                               </image>
+                                                            </ImageView>
+                                                         </graphic>
+                                                      </JFXButton>
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </VBox>
+                                       </content>
+                                    </ScrollPane>
+                                    <HBox prefHeight="100.0" prefWidth="50.0" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+               </content>
+            </ScrollPane>
+            <HBox prefHeight="50.0" prefWidth="400.0">
+               <children>
+                  <JFXButton buttonType="RAISED" onAction="#switchToMain" prefHeight="50.0" prefWidth="134.0" text="home">
+                     <graphic>
+                        <ImageView fitHeight="50.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@home.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton onAction="#switchToCart" text="cart">
+                     <graphic>
+                        <ImageView fitHeight="50.0" fitWidth="134.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@cartpng.parspng.com-6.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</StackPane>
